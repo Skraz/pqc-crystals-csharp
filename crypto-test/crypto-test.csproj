@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>crystals_csharp_test</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="data\crypto\pqc\crystals\dilithium\PQCsignKAT_Dilithium2.rsp" />
+    <None Remove="data\crypto\pqc\crystals\dilithium\PQCsignKAT_Dilithium3.rsp" />
+    <None Remove="data\crypto\pqc\crystals\dilithium\PQCsignKAT_Dilithium5.rsp" />
+    <None Remove="data\crypto\pqc\crystals\kyber\kyber1024.rsp" />
+    <None Remove="data\crypto\pqc\crystals\kyber\kyber512.rsp" />
+    <None Remove="data\crypto\pqc\crystals\kyber\kyber768.rsp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="data\crypto\pqc\crystals\dilithium\PQCsignKAT_Dilithium2.rsp" />
+    <EmbeddedResource Include="data\crypto\pqc\crystals\dilithium\PQCsignKAT_Dilithium3.rsp" />
+    <EmbeddedResource Include="data\crypto\pqc\crystals\dilithium\PQCsignKAT_Dilithium5.rsp" />
+    <EmbeddedResource Include="data\crypto\pqc\crystals\kyber\kyber1024.rsp" />
+    <EmbeddedResource Include="data\crypto\pqc\crystals\kyber\kyber512.rsp" />
+    <EmbeddedResource Include="data\crypto\pqc\crystals\kyber\kyber768.rsp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+    <PackageReference Include="Microsoft.NETCore.App" Version="2.2.8" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\crypto\src\crypto.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\..\..\..\..\Downloads\bccrypto-csharp-1.9.0-bin\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
