@@ -1,25 +1,50 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>crystals_csharp</RootNamespace>
+	  <OutputType>Exe</OutputType>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <ServerGarbageCollector>true</ServerGarbageCollector>
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto">
-      <HintPath>..\..\..\..\..\..\Downloads\bccrypto-csharp-1.9.0-bin\BouncyCastle.Crypto.dll</HintPath>
-    </Reference>
+    <Compile Remove="pqc\**" />
+    <EmbeddedResource Remove="pqc\**" />
+    <None Remove="pqc\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="data\crypto\pqc\crystals\dilithium\PQCsignKAT_Dilithium2.rsp" />
+    <None Remove="data\crypto\pqc\crystals\dilithium\PQCsignKAT_Dilithium3.rsp" />
+    <None Remove="data\crypto\pqc\crystals\dilithium\PQCsignKAT_Dilithium5.rsp" />
+    <None Remove="data\crypto\pqc\crystals\kyber\kyber1024.rsp" />
+    <None Remove="data\crypto\pqc\crystals\kyber\kyber512.rsp" />
+    <None Remove="data\crypto\pqc\crystals\kyber\kyber768.rsp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="data\crypto\pqc\crystals\dilithium\PQCsignKAT_Dilithium2.rsp" />
+    <EmbeddedResource Include="data\crypto\pqc\crystals\dilithium\PQCsignKAT_Dilithium3.rsp" />
+    <EmbeddedResource Include="data\crypto\pqc\crystals\dilithium\PQCsignKAT_Dilithium5.rsp" />
+    <EmbeddedResource Include="data\crypto\pqc\crystals\kyber\kyber1024.rsp" />
+    <EmbeddedResource Include="data\crypto\pqc\crystals\kyber\kyber512.rsp" />
+    <EmbeddedResource Include="data\crypto\pqc\crystals\kyber\kyber768.rsp" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="crypto\pqc\interfaces\" />
-    <Folder Include="pqc\dilithium\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\..\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

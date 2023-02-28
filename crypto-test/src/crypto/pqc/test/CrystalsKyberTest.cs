@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using crystals_csharp.crypto.pqc.interfaces;
 using crystals_csharp.crypto.pqc.kyber;
 using crystals_csharp_test.src.util.test;
@@ -32,10 +28,22 @@ namespace crystals_csharp_test.src.crypto.pqc.test
                 "kyber1024.rsp"
             };
 
+            string[] outFiles =
+            {
+                "kyber512-concurrency.csv",
+                "kyber768-concurrency.csv",
+                "kyber1024-concurrency.csv"
+            };
+
             for (int fileIndex = 0; fileIndex != files.Length; fileIndex++)
             {
                 string name = files[fileIndex];
+                string outName = outFiles[fileIndex];
+                File.WriteAllText(outName, String.Empty);
                 StreamReader src = new StreamReader(SimpleTest.GetTestDataAsStream("crypto.pqc.crystals.kyber." + name));
+
+
+
 
 
                 string line = null;
@@ -118,6 +126,13 @@ namespace crystals_csharp_test.src.crypto.pqc.test
 
                             Assert.True(Arrays.AreEqual(dec_key, ss), name + " " + count + ": kem_dec ss");
                             Assert.True(Arrays.AreEqual(dec_key, secret), name + " " + count + ": kem_dec key");
+
+                            String outString = count;
+
+                            using (StreamWriter sw = new StreamWriter(outName))
+                            {
+                                sw.WriteLine(outString);
+                            }
                         }
 
                         buf.Clear();
